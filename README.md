@@ -9,7 +9,7 @@
 | last_name           | string  | null: false               |
 | first_name_katakana | string  | null: false               |
 | last_name_katakana  | string  | null: false               |
-| birthday            | integer | null: false               |
+| birthday            | date    | null: false               |
 
 ## Association
 
