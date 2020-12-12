@@ -1,24 +1,54 @@
-# README
+# usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| nickname            | string  | null: false |
+| email               | string  | null: false |
+| password            | string  | null: false |
+| first_name          | string  | null: false |
+| last_name           | string  | null: false |
+| first_name_katakana | string  | null: false |
+| last_name_katakana  | string  | null: false |
+| birthday            | integer | null: false |
 
-Things you may want to cover:
+## Association
 
-* Ruby version
+- has_many :items
+- has_many :purchases
 
-* System dependencies
+# itemsテーブル
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| detail        | string     | null: false                    |
+| category      | string     | null: false                    |
+| status        | string     | null: false                    |
+| price         | integer    | null: false                    |
+| delivery_fee  | integer    | null: false                    |
+| delivery_days | integer    | null: false                    |
+| delivery_from | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* Database creation
+## Association
 
-* Database initialization
+- belongs_to :user
+- has_one :purchase
 
-* How to run the test suite
+# purchaseテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| card         | integer    | null: false                    |
+| postal_code  | integer    | null: false                    |
+| prefecture   | string     | null: false                    |
+| city         | string     | null: false                    |
+| address      | string     | null: false                    |
+| phone_number | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
 
-* Deployment instructions
+## Association
 
-* ...
+- belongs_to :user
+- belongs_to :item
