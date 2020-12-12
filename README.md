@@ -27,7 +27,7 @@
 | price            | integer    | null: false                    |
 | delivery_fee_id  | integer    | null: false                    |
 | delivery_days_id | integer    | null: false                    |
-| delivery_from-id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ## Association
@@ -37,15 +37,15 @@
 
 # purchasesテーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| address      | string     | null: false                    |
-| phone_number | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
-| item         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | string     | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| phone_number  | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ## Association
 
