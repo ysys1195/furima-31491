@@ -1,15 +1,15 @@
 # usersテーブル
 
-| Column              | Type    | Options     |
-| ------------------- | ------- | ----------- |
-| nickname            | string  | null: false |
-| email               | string  | null: false |
-| password            | string  | null: false |
-| first_name          | string  | null: false |
-| last_name           | string  | null: false |
-| first_name_katakana | string  | null: false |
-| last_name_katakana  | string  | null: false |
-| birthday            | integer | null: false |
+| Column              | Type    | Options                   |
+| ------------------- | ------- | ------------------------- |
+| nickname            | string  | null: false               |
+| email               | string  | null: false, unique: true |
+| password            | string  | null: false               |
+| first_name          | string  | null: false               |
+| last_name           | string  | null: false               |
+| first_name_katakana | string  | null: false               |
+| last_name_katakana  | string  | null: false               |
+| birthday            | integer | null: false               |
 
 ## Association
 
@@ -35,7 +35,7 @@
 - belongs_to :user
 - has_one :purchase
 
-# purchaseテーブル
+# purchasesテーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
