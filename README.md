@@ -18,17 +18,17 @@
 
 # itemsテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| detail        | string     | null: false                    |
-| category      | string     | null: false                    |
-| status        | string     | null: false                    |
-| price         | integer    | null: false                    |
-| delivery_fee  | integer    | null: false                    |
-| delivery_days | integer    | null: false                    |
-| delivery_from | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| detail           | string     | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| delivery_fee_id  | integer    | null: false                    |
+| delivery_days_id | integer    | null: false                    |
+| delivery_from-id | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ## Association
 
