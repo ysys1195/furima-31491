@@ -39,7 +39,6 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| card         | integer    | null: false                    |
 | postal_code  | integer    | null: false                    |
 | prefecture   | string     | null: false                    |
 | city         | string     | null: false                    |
