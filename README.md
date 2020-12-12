@@ -1,4 +1,4 @@
-# usersテーブル
+## usersテーブル
 
 | Column              | Type    | Options                   |
 | ------------------- | ------- | ------------------------- |
@@ -11,12 +11,12 @@
 | last_name_katakana  | string  | null: false               |
 | birthday            | date    | null: false               |
 
-## Association
+### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :purchase_logs
 
-# itemsテーブル
+## itemsテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -30,12 +30,25 @@
 | prefecture_id    | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :purchase_log
 
-# purchasesテーブル
+## purchase_logsテーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- belongs_to :purchase
+
+## purchasesテーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -44,10 +57,7 @@
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | phone_number  | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
-- belongs_to :user
-- belongs_to :item
+- has_one :purchase_log
