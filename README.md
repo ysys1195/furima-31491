@@ -46,19 +46,20 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :purchase
+- has_one :purchase
 
 ## purchasesテーブル
 
-| Column        | Type   | Options                        |
-| ------------- | ------ | ------------------------------ |
-| postal_code   | string | null: false                    |
-| prefecture_id | string | null: false                    |
-| city          | string | null: false                    |
-| address       | string | null: false                    |
-| building      | string |                                |
-| phone_number  | string | null: false                    |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | string     | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase_log  | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase_log
+- belongs_to :purchase_log
