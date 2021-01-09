@@ -62,25 +62,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
       end
+      it 'category_idが1だと保存できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
       it 'status_idが存在しなければ保存できない' do
         @item.status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank", 'Status is not a number')
+      end
+      it 'status_idが1だと保存できない' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'delivery_fee_idが存在しなければ保存できない' do
         @item.delivery_fee_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank", 'Delivery fee is not a number')
       end
+      it 'delivery_fee_idが1だと保存できない' do
+        @item.delivery_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
+      end
       it 'prefecture_idが存在しなければ保存できない' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
+      it 'prefecture_idが1だと保存できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+      end
       it 'delivery_day_idが存在しなければ保存できない' do
         @item.delivery_day_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day can't be blank", 'Delivery day is not a number')
+      end
+      it '_idが1だと保存できない' do
+        @item.delivery_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Delivery day must be other than 1')
       end
       it 'userが紐づいていないと保存できない' do
         @item.user = nil
