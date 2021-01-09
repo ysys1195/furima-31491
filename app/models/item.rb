@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :status 
+  belongs_to :status
   belongs_to :delivery_fee
   belongs_to :prefecture
   belongs_to :delivery_day
@@ -12,9 +12,9 @@ class Item < ApplicationRecord
     validates :name
     validates :detail
     validates :image
-    validates :price, format: {with: /\d+/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+    validates :price, format: { with: /\d+/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
-  
+
   with_options presence: true, numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
