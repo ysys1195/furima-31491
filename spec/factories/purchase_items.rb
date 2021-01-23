@@ -10,5 +10,7 @@ FactoryBot.define do
     building { gimei.town.kanji }
     phone_number { Faker::Number.leading_zero_number(digits: 11) }
     token { 'tok_abcdefghijk00000000000000000' }
+    user_id { Faker::Number.number(digits: 2)}
+    item_id { Faker::Number.number(digits: 2)}
   end
 end
