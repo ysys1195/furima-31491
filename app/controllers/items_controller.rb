@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    @purchase_log = PurchaseLog.all
   end
 
   def new
@@ -21,6 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @purchase_log = PurchaseLog.all
   end
 
   def edit
