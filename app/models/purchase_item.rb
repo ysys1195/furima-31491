@@ -8,6 +8,8 @@ class PurchaseItem
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{,11}\z/ }
+    validates :user_id
+    validates :item_id
     validates :token
   end
 
