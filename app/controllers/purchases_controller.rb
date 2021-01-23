@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action ::find_item_id, only: [:index, :create]
 
   def index
     @purchase_item = PurchaseItem.new
-    @item = Item.find(params[:item_id])
     purchase_log = PurchaseLog.where(item_id: @item.id).exists?
     return if (purchase_log == false) && (@item.user_id != current_user.id)
 
@@ -12,7 +12,6 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_item = PurchaseItem.new(purchase_item_params)
-    @item = Item.find(params[:item_id])
     if @purchase_item.valid?
       pay_item
       @purchase_item.save
@@ -35,5 +34,9 @@ class PurchasesController < ApplicationController
       card: purchase_item_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def find_item_id
+    @item = Item.find(params[:item_id])
   end
 end
