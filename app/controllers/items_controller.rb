@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    @purchase_log = PurchaseLog.all
   end
 
   def new
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase_log = PurchaseLog.where(item_id: @item.id).exists?
   end
 
   def edit
