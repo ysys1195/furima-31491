@@ -21,8 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @purchase_log = PurchaseLog.all
+    @purchase_log = PurchaseLog.where(item_id: @item.id).exists?
   end
 
   def edit

@@ -1,7 +1,13 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+
   def index
     @purchase_item = PurchaseItem.new
     @item = Item.find(params[:item_id])
+    purchase_log = PurchaseLog.where(item_id: @item.id).exists?
+    return if (purchase_log == false) && (@item.user_id != current_user.id)
+
+    redirect_to root_path
   end
 
   def create

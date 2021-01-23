@@ -8,15 +8,11 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image,class:"item-box-img" %>
-      <% index = 0 %>
-      <% @purchase_log.each do |log| %>
-        <% if @item.id == log.item_id %>
+      <% if @purchase_log == true %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
-        <% index += 1 %>
         <% end %>
-      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -33,7 +29,7 @@
         <p class='or-text'>or</p>
         <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
       <% else %>
-        <% if index == 0 %>
+        <% if @purchase_log == false %> 
           <%= link_to '購入画面に進む', item_purchases_path(@item.id), class:"item-red-btn"%>
         <% end %>
       <% end %>
