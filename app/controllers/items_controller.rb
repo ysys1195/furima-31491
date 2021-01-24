@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_item_id, only: [:show, :edit, :update, :destroy]
+  before_action :log_search, only: [:show, :edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -21,11 +22,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchase_log = PurchaseLog.where(item_id: @item.id).exists?
   end
 
   def edit
-    return if @item.user_id == current_user.id
+    return if (@item.user_id == current_user.id) && (@purchase_log == false)
 
     redirect_to root_path
   end
@@ -53,5 +53,9 @@ class ItemsController < ApplicationController
 
   def find_item_id
     @item = Item.find(params[:id])
+  end
+
+  def log_search
+    @purchase_log = PurchaseLog.where(item_id: @item.id).exists?
   end
 end
